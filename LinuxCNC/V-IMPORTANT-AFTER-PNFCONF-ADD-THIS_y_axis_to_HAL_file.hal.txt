@@ -1,0 +1,9 @@
+# ---setup home / limit switch signals---
+
+#line '# ---setup home / limit switch signals---'
+
+#replace this line
+#net y2-home-sw     =>  joint.2.home-sw-in 
+
+#with this line
+net home-y     =>  joint.2.home-sw-in
