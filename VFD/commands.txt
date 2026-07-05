@@ -1,0 +1,20 @@
+
+#from HAL show- enable output 5 which is wired to D11 (enable) on VFD:  hm2_7i96s.0.outm.00.out-05
+
+#poll register 6, every second
+mbpoll -a 1 -b 115200 -P none -t 4 -r 6 /dev/ttyUSB0
+
+#get enabled state
+mbpoll -a 1 -b 115200 -P none -t 4 -r 11 -1 /dev/ttyUSB0
+
+# Set speed to 200Hz (1000 RPM)
+mbpoll -a 1 -b 115200 -P none -t 4 -r 2 /dev/ttyUSB0 -- 166
+
+# Set speed to 200Hz (12000 RPM)
+mbpoll -a 1 -b 115200 -P none -t 4 -r 2 /dev/ttyUSB0 -- 2000
+
+# Run
+mbpoll -a 1 -b 115200 -P none -t 4 -r 1 /dev/ttyUSB0 -- 1
+
+# Stop
+mbpoll -a 1 -b 115200 -P none -t 4 -r 1 /dev/ttyUSB0 -- 0
