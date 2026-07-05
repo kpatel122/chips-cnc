@@ -1,0 +1,24 @@
+# Include your custom HAL commands here
+# This file will not be overwritten when you run PNCconf again
+
+# --- VFD Modbus bridge (mb2hal) ---
+loadusr -W mb2hal config=/home/kp/Desktop/printnc-test1/mb2hal.ini
+
+# RPM -> Optidrive register scaling (register = RPM / 6, per modbus-testing-guide.md)
+loadrt scale names=spindle-rpm-to-reg
+addf spindle-rpm-to-reg servo-thread
+setp spindle-rpm-to-reg.gain 0.16667
+
+net spindle-vel-cmd-rpm-abs => spindle-rpm-to-reg.in
+net spindle-reg-speed <= spindle-rpm-to-reg.out
+net spindle-reg-speed => mb2hal.vfd_speed.00
+
+loadrt conv_bit_float count=1
+addf conv-bit-float.0 servo-thread
+
+net spindle-enable       => conv-bit-float.0.in
+net spindle-enable-float <= conv-bit-float.0.out
+net spindle-enable-float => mb2hal.vfd_control_word.00
+
+# --- VFD hardware enable (DI1) — independent of Modbus, fails safe on e-stop ---
+net machine-is-enabled => hm2_7i96s.0.outm.00.out-05

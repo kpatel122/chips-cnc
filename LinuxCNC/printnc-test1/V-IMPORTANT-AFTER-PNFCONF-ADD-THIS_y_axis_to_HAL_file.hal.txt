@@ -11,7 +11,7 @@ net home-y     =>  joint.2.home-sw-in
 
 
 
-#to add the mpeg wheel: replace from this line (will be in the original) to the end
+#to add the mpeg wheel: replace from this line (will be in the original)
 
 #******************************
 # connect miscellaneous signals
