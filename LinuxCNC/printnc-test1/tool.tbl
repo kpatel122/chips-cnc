@@ -1,0 +1,5 @@
+T1 P1 Z0.511 D3 ;3mm end mill Sample Tool
+T2 P4 Z0.1 D1.5 ;1.5mm  end mill Sample Tool
+T3 P3 Z1.273 D5 ;5mm tap drill Sample Tool
+T4 P2 Z10 D16 ;16 mm Sample Tool
+T5 P5 Z25 D25 ;25mm er Sample Tool

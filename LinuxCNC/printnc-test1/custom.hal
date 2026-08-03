@@ -22,3 +22,30 @@ net spindle-enable-float => mb2hal.vfd_control_word.00
 
 # --- VFD hardware enable (DI1) — independent of Modbus, fails safe on e-stop ---
 net machine-is-enabled => hm2_7i96s.0.outm.00.out-05
+
+
+#front panel in for 5v in_not for 24v
+net home-btn  <=  hm2_7i96s.0.gpio.003.in
+net home-btn  =>  halui.home-all
+
+net machine-toggle  <=  hm2_7i96s.0.gpio.006.in
+net machine-toggle  =>  halui.machine.on
+
+net feed-start  <=  hm2_7i96s.0.gpio.004.in
+net feed-start  =>  halui.program.run
+net feed-start  =>  halui.program.resume
+
+net feed-hold   <=  hm2_7i96s.0.gpio.005.in
+net feed-hold   =>  halui.program.pause
+
+net zero-x  <=  hm2_7i96s.0.gpio.034.in_not
+net zero-x  =>  halui.mdi-command-00
+
+net zero-y  <=  hm2_7i96s.0.gpio.035.in_not
+net zero-y  =>  halui.mdi-command-01
+
+net zero-z  <=  hm2_7i96s.0.gpio.036.in_not
+net zero-z  =>  halui.mdi-command-02
+
+net tool-change-pos  <=  hm2_7i96s.0.gpio.007.in
+net tool-change-pos  =>  halui.mdi-command-03

@@ -1,0 +1,45 @@
+# Halshow settings
+# This file is generated automatically.
+wm geometry . 1920x948+0+27
+placeFrames 0.3
+set ::ratio 0.3
+set ::old_w_leftf 160
+set ::watchlist {
+    pin+hm2_7i96s.0.ssr.00.out-03
+    pin+hm2_7i96s.0.ssr.00.out-02
+    pin+hm2_7i96s.0.ssr.00.out-01
+    pin+hm2_7i96s.0.ssr.00.out-00
+    pin+hm2_7i96s.0.outm.00.out-04
+    pin+hm2_7i96s.0.outm.00.out-05
+    pin+hm2_7i96s.0.encoder.00.count
+    pin+hm2_7i96s.0.encoder.00.position
+    pin+hm2_7i96s.0.gpio.049.in
+    pin+hm2_7i96s.0.gpio.048.in
+    pin+hm2_7i96s.0.gpio.047.in
+    pin+hm2_7i96s.0.gpio.037.in
+    pin+hm2_7i96s.0.gpio.039.in
+    pin+hm2_7i96s.0.gpio.041.in
+    pin+hm2_7i96s.0.gpio.010.in
+    pin+hm2_7i96s.0.gpio.000.in
+    pin+hm2_7i96s.0.gpio.001.in
+    pin+hm2_7i96s.0.gpio.002.in
+    pin+hm2_7i96s.0.gpio.034.in
+    pin+hm2_7i96s.0.gpio.035.in
+    pin+hm2_7i96s.0.gpio.036.in
+    pin+hm2_7i96s.0.gpio.042.in
+    pin+hm2_7i96s.0.gpio.043.in
+    pin+hm2_7i96s.0.gpio.044.in
+    pin+hm2_7i96s.0.gpio.046.in
+    pin+hm2_7i96s.0.gpio.003.in
+    pin+hm2_7i96s.0.gpio.004.in
+    pin+hm2_7i96s.0.gpio.005.in
+    pin+hm2_7i96s.0.gpio.006.in
+    pin+hm2_7i96s.0.gpio.007.in
+}
+set ::workmode watchhal
+set ::watchInterval 100
+set ::col1_width 100
+set ::ffmts 
+set ::ifmts 
+set ::alwaysOnTop 0
+set ::autoSaveWatchlist 1

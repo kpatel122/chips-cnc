@@ -1,0 +1,25 @@
+E-Stop
+
+Machine:
+Start : Start
+Stop : Stop
+
+Feed:
+Start : Green
+Hold :Yellow
+Abort : Red
+
+Home : Black
+
+All: 0 small red
+Z 0: small black
+X 0: small blue
+Y 0 :small white
+
+Tool Change : Blue
+Air : White
+
+
+Lights : Switch
+Panel
+
