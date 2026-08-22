@@ -23,6 +23,8 @@ net spindle-enable-float => mb2hal.vfd_control_word.00
 # --- VFD hardware enable (DI1) — independent of Modbus, fails safe on e-stop ---
 net machine-is-enabled => hm2_7i96s.0.outm.00.out-05
 
+# Probe signal (NC - in goes TRUE when probe triggers)
+net probe-in  <=  hm2_7i96s.0.gpio.008.in_not
 
 #front panel in for 5v in_not for 24v
 net home-btn  <=  hm2_7i96s.0.gpio.003.in
@@ -49,3 +51,37 @@ net zero-z  =>  halui.mdi-command-02
 
 net tool-change-pos  <=  hm2_7i96s.0.gpio.007.in
 net tool-change-pos  =>  halui.mdi-command-03
+
+net back-pos  <=  hm2_7i96s.0.gpio.042.in_not
+net back-pos  =>  halui.mdi-command-04
+
+# Probe trigger button
+net probe-trigger  <=  hm2_7i96s.0.gpio.043.in_not
+net probe-trigger  =>  halui.mdi-command-05
+
+#clear workspace coordinates after home:
+loadrt and2 names=homed-and1,homed-and2,homed-and3
+loadrt oneshot names=home-complete-shot
+
+addf homed-and1 servo-thread
+addf homed-and2 servo-thread
+addf homed-and3 servo-thread
+addf home-complete-shot servo-thread
+
+setp home-complete-shot.width 0.5
+
+net x-is-homed   =>  homed-and1.in0
+net y-is-homed   =>  homed-and1.in1
+net y2-is-homed  =>  homed-and2.in0
+net z-is-homed   =>  homed-and2.in1
+
+net homed-12  <=  homed-and1.out
+net homed-34  <=  homed-and2.out
+net homed-12  =>  homed-and3.in0
+net homed-34  =>  homed-and3.in1
+
+net all-homed          <=  homed-and3.out
+net all-homed          =>  home-complete-shot.in
+net home-zero-trigger  <=  home-complete-shot.out
+net home-zero-trigger  =>  halui.mdi-command-06
+

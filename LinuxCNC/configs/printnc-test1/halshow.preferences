@@ -35,6 +35,7 @@ set ::watchlist {
     pin+hm2_7i96s.0.gpio.005.in
     pin+hm2_7i96s.0.gpio.006.in
     pin+hm2_7i96s.0.gpio.007.in
+    pin+hm2_7i96s.0.gpio.008.in
 }
 set ::workmode watchhal
 set ::watchInterval 100

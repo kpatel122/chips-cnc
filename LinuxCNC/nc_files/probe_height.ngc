@@ -1,0 +1,12 @@
+O<probe_height> sub
+G10 L20 P0 Z0
+G38.2 Z-100 F200
+G0 Z[#5063 + 2]
+G38.2 Z[#5063 - 3] F20
+G10 L20 P0 Z64.1
+G0 Z74
+O<probe_height> endsub
+M2
+
+
+
