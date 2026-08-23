@@ -1,5 +1,5 @@
  O<back> sub
-G0 Z0
-G0 X0 Y350
+G53 Z0
+G53 X0 Y350
 O<back> endsub
 M2
