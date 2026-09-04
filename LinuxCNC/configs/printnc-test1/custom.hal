@@ -59,29 +59,3 @@ net back-pos  =>  halui.mdi-command-04
 net probe-trigger  <=  hm2_7i96s.0.gpio.043.in_not
 net probe-trigger  =>  halui.mdi-command-05
 
-#clear workspace coordinates after home:
-loadrt and2 names=homed-and1,homed-and2,homed-and3
-loadrt oneshot names=home-complete-shot
-
-addf homed-and1 servo-thread
-addf homed-and2 servo-thread
-addf homed-and3 servo-thread
-addf home-complete-shot servo-thread
-
-setp home-complete-shot.width 0.5
-
-net x-is-homed   =>  homed-and1.in0
-net y-is-homed   =>  homed-and1.in1
-net y2-is-homed  =>  homed-and2.in0
-net z-is-homed   =>  homed-and2.in1
-
-net homed-12  <=  homed-and1.out
-net homed-34  <=  homed-and2.out
-net homed-12  =>  homed-and3.in0
-net homed-34  =>  homed-and3.in1
-
-net all-homed          <=  homed-and3.out
-net all-homed          =>  home-complete-shot.in
-net home-zero-trigger  <=  home-complete-shot.out
-net home-zero-trigger  =>  halui.mdi-command-06
-
