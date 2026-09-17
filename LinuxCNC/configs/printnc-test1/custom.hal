@@ -37,8 +37,14 @@ net feed-start  <=  hm2_7i96s.0.gpio.004.in
 net feed-start  =>  halui.program.run
 net feed-start  =>  halui.program.resume
 
-net feed-hold   <=  hm2_7i96s.0.gpio.005.in
-net feed-hold   =>  halui.program.pause
+loadrt debounce cfg=1
+addf debounce.0 servo-thread
+setp debounce.0.delay 25
+
+net feed-hold-raw  <=  hm2_7i96s.0.gpio.005.in
+net feed-hold-raw  =>  debounce.0.0.in
+net feed-hold      <=  debounce.0.0.out
+net feed-hold      =>  halui.program.pause
 
 net zero-x  <=  hm2_7i96s.0.gpio.034.in_not
 net zero-x  =>  halui.mdi-command-00

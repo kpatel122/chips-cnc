@@ -1,6 +1,9 @@
 O<tool_change> sub
-G53 G0 Z0
-G53 G0 X165 Y0
-M0
+o100 if [#<selected_tool> NE #5400]
+  G53 G0 Z0
+  G53 G0 X165 Y0
+  (MSG, Change tool - jog to probe plate - press probe button - then press Cycle Start)
+  M0
+o100 endif
 O<tool_change> endsub
 M2
